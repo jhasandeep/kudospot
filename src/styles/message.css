@@ -1,0 +1,18 @@
+.icon-text {
+  display: flex;
+  align-items: center;
+}
+
+.message-reason {
+  text-align: center;
+}
+
+.like-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.like-button {
+  background: transparent;
+  border: none;
+}

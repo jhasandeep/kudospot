@@ -1,0 +1,45 @@
+.landing-page {
+  background-image: url("/public/background2.jpg");
+  background-repeat: none;
+  background-size: cover;
+
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing-buttons {
+  background: white;
+  color: black;
+  padding: 10px 60px;
+  border-radius: 4px;
+}
+.landing-buttons > div {
+  height: 30px;
+  color: rgb(18, 222, 171);
+}
+
+.messages-box {
+  margin: 20px 0px;
+  height: 60vh;
+  overflow: auto;
+}
+
+.message {
+  background: white;
+  margin: 20px 0px;
+  padding: 20px 40px;
+}
+
+.no-message {
+  text-align: center;
+}
+
+.button-position {
+  width: 70vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}

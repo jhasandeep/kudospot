@@ -1,0 +1,46 @@
+.give-kudos-page {
+  background-image: url("/public/background2.jpg");
+  background-repeat: none;
+  background-size: cover;
+
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  text-align: center;
+}
+
+.select-box {
+  border: 2px solid black;
+  border-radius: 8px;
+  width: 400px;
+  height: 60px;
+  margin: 10px 0px;
+  padding: 0px 40px;
+  text-align: center;
+}
+.select-box::placeholder {
+  color: grey;
+}
+
+.textarea-box {
+  border: 2px solid black;
+  border-radius: 8px;
+  width: 320px;
+  height: 80px;
+  margin: 10px 0px;
+  padding: 10px 40px;
+  text-align: center;
+}
+
+.button {
+  background: white;
+  color: black;
+  padding: 10px 60px;
+  border-radius: 4px;
+}

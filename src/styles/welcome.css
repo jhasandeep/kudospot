@@ -1,0 +1,45 @@
+.welcome-page {
+  /* background-color: white; */
+  /* background-image: url("/public/background.PNG"); */
+  background-image: url("/public/background2.jpg");
+  background-repeat: none;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-card {
+  text-align: center;
+}
+
+.heading {
+  font-size: 60px;
+  margin: 20px 0px;
+}
+
+.input-box {
+  border: 2px solid black;
+  border-radius: 8px;
+  width: 400px;
+  height: 80px;
+  margin: 40px 0px;
+  padding: 0px 40px;
+  text-align: center;
+}
+.input-box::placeholder {
+  color: grey;
+}
+
+.login-button {
+  background: black;
+  color: white;
+  padding: 10px 100px;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: red;
+}

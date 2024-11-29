@@ -1,0 +1,60 @@
+.analytics-page {
+  background-image: url("/public/background2.jpg");
+  background-repeat: none;
+  background-size: cover;
+
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.charts-container {
+  width: 50%;
+}
+.charts-container > h1 {
+  text-align: center;
+  color: white;
+  background-color: grey;
+  margin: 40px 100px;
+}
+
+.table-container {
+  width: 50%;
+  margin: 20px;
+}
+
+.table-container > h1 {
+  text-align: center;
+  color: white;
+  background-color: grey;
+  margin: 40px 100px;
+}
+
+li {
+  list-style: none;
+}
+
+table {
+  width: 50%;
+}
+th {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+  background: rgb(22, 114, 235);
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #928ee2f0;
+}
+
+tr:nth-child(odd) {
+  background-color: #b187e8;
+}
+
+td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
