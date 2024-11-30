@@ -24,7 +24,7 @@ mongoose
 app.use("/api", apiRoutes);
 
 app.get("/", (req, res) => {
-  console.log("working");
+  res.status(200).json("working");
 });
 
 // Start Server
