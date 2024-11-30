@@ -7,7 +7,7 @@ const apiRoutes = require("./routes/api");
 const app = express();
 
 dotenv.config({
-  path: "./config.env",
+  path: "./config/config.env",
 });
 
 // Middleware

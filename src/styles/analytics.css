@@ -8,6 +8,13 @@
   display: flex;
 }
 
+@media screen and (max-width: 1200px) {
+  .analytics-page {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .charts-container {
   width: 50%;
 }

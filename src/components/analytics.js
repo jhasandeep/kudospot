@@ -14,23 +14,27 @@ function Analytics() {
   const ServerUrl = process.env.REACT_APP_API_URL;
   const [analytics, setAnalytics] = useState([]);
 
-  console.log(analytics, "check analytics");
-
   useEffect(() => {
-    fetch(`${ServerUrl}/api/analytics`)
-      .then((res) => res.json())
-      .then((data) => setAnalytics(data));
+    const fetchAnalytics = async () => {
+      const response = await fetch(`${ServerUrl}/api/analytics`);
+
+      const data = await response.json();
+
+      setAnalytics(data);
+    };
+
+    fetchAnalytics();
   }, []);
 
   return (
     <div className="analytics-page">
       <div className="charts-container">
         <h1>Kudos Given</h1>
-        {analytics.analytics.length > 0 ? (
+        {analytics?.analytics?.length > 0 ? (
           <BarChart
             width={600}
             height={300}
-            data={analytics}
+            data={analytics.analytics}
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -55,7 +59,7 @@ function Analytics() {
             </tr>
           </thead>
           <tbody>
-            {analytics.analyticsLeaderboard.map((item, index) => (
+            {analytics?.analyticsLeaderboard?.map((item, index) => (
               <tr key={index}>
                 <td>{item.receiver}</td>
                 <td>{item.totalKudos}</td>
