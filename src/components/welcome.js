@@ -29,7 +29,6 @@ function Welcome() {
 
       if (response.ok) {
         setUser(name);
-        console.log("Navigating to /landing");
         navigate("/landing");
         setError(""); // Clear error if login is successful
       } else {

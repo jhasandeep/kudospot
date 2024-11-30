@@ -19,7 +19,7 @@ const Message = ({ messageDetails }) => {
         />
 
         <p>
-          {messageDetails.sender === userName ? "You" : messageDetails.name}
+          {messageDetails.sender === userName ? "You " : messageDetails.name}
           give helping hand to {messageDetails.receiver}
         </p>
       </div>
