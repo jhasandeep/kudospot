@@ -64,37 +64,41 @@ router.get("/analytics", async (req, res) => {
     const analytics = await Kudos.aggregate([
       {
         $group: {
-          _id: { receiver: "$receiver", badge: "$badge" }, // Group by receiver and badge
-          totalKudos: { $sum: 1 }, // Count the total number of kudos
+          _id: { receiver: "$receiver", badge: "$badge" },
+          totalKudos: { $sum: 1 },
         },
       },
       {
         $project: {
-          _id: 0, // Remove the default _id field
-          receiver: "$_id.receiver", // Extract the receiver's name
-          badge: "$_id.badge", // Extract the badge name
-          totalKudos: 1, // Include the total kudos field
+          _id: 0,
+          receiver: "$_id.receiver",
+          badge: "$_id.badge",
+          totalKudos: 1,
         },
       },
     ]);
+    console.log("Analytics Data:", analytics); // Log analytics output
+
     const analyticsLeaderboard = await Kudos.aggregate([
       {
         $group: {
-          _id: { receiver: "$receiver" }, // Group by receiver and badge
-          totalKudos: { $sum: 1 }, // Count the total number of kudos
+          _id: { receiver: "$receiver" },
+          totalKudos: { $sum: 1 },
         },
       },
       {
         $project: {
-          _id: 0, // Remove the default _id field
-          receiver: "$_id.receiver", // Extract the receiver's name
-
-          totalKudos: 1, // Include the total kudos field
+          _id: 0,
+          receiver: "$_id.receiver",
+          totalKudos: 1,
         },
       },
     ]);
-    res.json({ analytics, analyticsLeaderboard }); // Return the analytics data to the frontend
+    console.log("Leaderboard Data:", analyticsLeaderboard); // Log leaderboard output
+
+    res.json({ analytics, analyticsLeaderboard });
   } catch (err) {
+    console.error("Error in /analytics route:", err); // Log the error
     res.status(500).json({ error: err.message });
   }
 });
