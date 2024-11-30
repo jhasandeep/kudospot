@@ -58,7 +58,7 @@ router.post("/kudos", async (req, res) => {
 });
 
 // Get Kudos Analytics
-// Get Kudos Analytics
+
 router.get("/analytics", async (req, res) => {
   try {
     const analytics = await Kudos.aggregate([
@@ -77,7 +77,23 @@ router.get("/analytics", async (req, res) => {
         },
       },
     ]);
-    res.json(analytics); // Return the analytics data to the frontend
+    const analyticsLeaderboard = await Kudos.aggregate([
+      {
+        $group: {
+          _id: { receiver: "$receiver" }, // Group by receiver and badge
+          totalKudos: { $sum: 1 }, // Count the total number of kudos
+        },
+      },
+      {
+        $project: {
+          _id: 0, // Remove the default _id field
+          receiver: "$_id.receiver", // Extract the receiver's name
+
+          totalKudos: 1, // Include the total kudos field
+        },
+      },
+    ]);
+    res.json({ analytics, analyticsLeaderboard }); // Return the analytics data to the frontend
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

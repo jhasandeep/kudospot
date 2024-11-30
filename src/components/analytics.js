@@ -24,7 +24,7 @@ function Analytics() {
     <div className="analytics-page">
       <div className="charts-container">
         <h1>Kudos Given</h1>
-        {analytics.length > 0 ? (
+        {analytics.analytics.length > 0 ? (
           <BarChart
             width={600}
             height={300}
@@ -53,7 +53,7 @@ function Analytics() {
             </tr>
           </thead>
           <tbody>
-            {analytics.map((item, index) => (
+            {analytics.analyticsLeaderboard.map((item, index) => (
               <tr key={index}>
                 <td>{item.receiver}</td>
                 <td>{item.totalKudos}</td>

@@ -25,8 +25,6 @@ function Welcome() {
 
       const data = await response.json();
 
-      console.log(response, "response");
-
       if (response.ok) {
         setUser(name);
         navigate("/landing");
