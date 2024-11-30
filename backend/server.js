@@ -23,6 +23,10 @@ mongoose
 // API Routes
 app.use("/api", apiRoutes);
 
+app.get("/", (req, res) => {
+  console.log("working");
+});
+
 // Start Server
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
