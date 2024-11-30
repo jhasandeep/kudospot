@@ -30,6 +30,7 @@ function Analytics() {
     <div className="analytics-page">
       <div className="charts-container">
         <h1>Kudos Given</h1>
+
         {analytics?.analytics?.length > 0 ? (
           <BarChart
             width={600}

@@ -5,11 +5,36 @@ import "../styles/message.css";
 import { UserContext } from "./userContext";
 
 const Message = ({ messageDetails }) => {
+  const ServerUrl = process.env.REACT_APP_API_URL;
   const { userName, setUser } = useContext(UserContext);
-  const [isLike, setIsLike] = useState(false);
+  const [isLike, setIsLike] = useState(
+    messageDetails.isLike.includes(userName) || false
+  );
 
-  const handleLike = () => {
-    setIsLike((prev) => !prev);
+  const handleLike = async () => {
+    if (!isLike) {
+      try {
+        await fetch(`${ServerUrl}/api/add-like`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ kudosId: messageDetails._id, userName }),
+        });
+        setIsLike((prev) => !prev);
+      } catch (error) {
+        console.log(error.message);
+      }
+    } else {
+      try {
+        await fetch(`${ServerUrl}/api/remove-like`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ kudosId: messageDetails._id, userName }),
+        });
+        setIsLike((prev) => !prev);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
   };
   return (
     <div className="message">
@@ -22,7 +47,7 @@ const Message = ({ messageDetails }) => {
           {messageDetails.sender === userName
             ? "You "
             : `${messageDetails.sender} `}
-          give helping hand to{" "}
+          give {messageDetails.badge} to{" "}
           {messageDetails.receiver === userName
             ? "you "
             : `${messageDetails.receiver} `}

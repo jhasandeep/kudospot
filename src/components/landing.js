@@ -46,7 +46,9 @@ const Landing = () => {
 
         <div className="messages-box">
           {messages.length > 0 ? (
-            messages.map((message) => <Message messageDetails={message} />)
+            messages.map((message) => (
+              <Message messageDetails={message} key={message._id} />
+            ))
           ) : (
             <p className="no-message">No Messages </p>
           )}

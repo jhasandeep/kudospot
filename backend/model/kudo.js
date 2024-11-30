@@ -17,9 +17,14 @@ const kudosSchema = new mongoose.Schema({
     type: String,
     required: true, // Reason for giving kudos
   },
+
   date: {
     type: Date,
     default: Date.now,
+  },
+  isLike: {
+    type: [String], // Array of user names who liked the message
+    default: [], // Default is an empty array
   },
 });
 

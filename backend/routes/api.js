@@ -77,7 +77,6 @@ router.get("/analytics", async (req, res) => {
         },
       },
     ]);
-    console.log("Analytics Data:", analytics); // Log analytics output
 
     const analyticsLeaderboard = await Kudos.aggregate([
       {
@@ -94,7 +93,6 @@ router.get("/analytics", async (req, res) => {
         },
       },
     ]);
-    console.log("Leaderboard Data:", analyticsLeaderboard); // Log leaderboard output
 
     res.json({ analytics, analyticsLeaderboard });
   } catch (err) {
@@ -109,6 +107,40 @@ router.get("/get-all-messages", async (req, res) => {
     const messages = await Kudos.find();
     res.json(messages);
   } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+//add like
+
+router.post("/add-like", async (req, res) => {
+  try {
+    const { kudosId, userName } = req.body;
+    await Kudos.findByIdAndUpdate(
+      kudosId,
+      { $addToSet: { isLike: userName } }, // Add user to the array if not already present
+      { new: true }
+    );
+
+    res.status(200).json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+//remove like
+
+router.post("/remove-like", async (req, res) => {
+  try {
+    const { kudosId, userName } = req.body;
+    await Kudos.findByIdAndUpdate(
+      kudosId,
+      { $pull: { isLike: userName } }, // Remove user from the array
+      { new: true }
+    );
+
+    res.status(200).json({ success: true });
+  } catch (error) {
     res.status(500).json({ error: err.message });
   }
 });
