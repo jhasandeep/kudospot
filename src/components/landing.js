@@ -27,8 +27,6 @@ const Landing = () => {
 
       const data = await response.json();
 
-      console.log(data);
-
       setMessages(data);
     };
 
