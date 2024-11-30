@@ -41,8 +41,6 @@ function GiveKudos() {
 
       const data = await response.json();
 
-      console.log(data);
-
       const filterUser = data.filter((user) => user.name !== userName);
       setUsers(filterUser);
     };
