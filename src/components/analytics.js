@@ -14,6 +14,8 @@ function Analytics() {
   const ServerUrl = process.env.REACT_APP_API_URL;
   const [analytics, setAnalytics] = useState([]);
 
+  console.log(analytics, "check analytics");
+
   useEffect(() => {
     fetch(`${ServerUrl}/api/analytics`)
       .then((res) => res.json())
